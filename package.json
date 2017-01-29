@@ -10,8 +10,9 @@
   },
   "license": "MIT",
   "files": [
-    "index.js",
-    "LICENSE"
+    "lib",
+    "LICENSE",
+    "index.js"
   ],
   "main": "index.js",
   "engines": {
@@ -23,5 +24,22 @@
   "keywords": [
     "base",
     "search"
-  ]
+  ],
+  "dependencies": {
+    "define-property": "^0.2.5",
+    "extend-shallow": "^2.0.1",
+    "is-valid-app": "^0.2.1",
+    "lazy-cache": "^2.0.2",
+    "lunr": "^0.7.2",
+    "through2": "^2.0.3"
+  },
+  "devDependencies": {
+    "algoliasearch": "^3.20.4",
+    "assemble": "^0.18.1",
+    "async-each": "^1.0.1",
+    "cheerio": "^0.22.0",
+    "fs-exists-sync": "^0.1.0",
+    "write": "^0.3.2",
+    "yargs-parser": "^4.2.1"
+  }
 }
