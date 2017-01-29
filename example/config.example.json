@@ -1,0 +1,4 @@
+{
+  "ALGOLIA_APPLICATION_ID": "your-application-id-here",
+  "ALGOLIA_SECRET_KEY": "your-secret-api-key-here"
+}
