@@ -22,8 +22,16 @@
     "test": "mocha"
   },
   "keywords": [
+    "algolia",
+    "assemble",
     "base",
-    "search"
+    "generate",
+    "lunr",
+    "node",
+    "node-base",
+    "search",
+    "update",
+    "verb"
   ],
   "dependencies": {
     "define-property": "^0.2.5",
