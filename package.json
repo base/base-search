@@ -36,9 +36,11 @@
     "algoliasearch": "^3.20.4",
     "assemble": "^0.18.1",
     "async-each": "^1.0.1",
+    "base-app": "^0.2.6",
     "cheerio": "^0.22.0",
     "fs-exists-sync": "^0.1.0",
     "lunr": "^0.7.2",
+    "mocha": "^3.2.0",
     "write": "^0.3.2",
     "yargs-parser": "^4.2.1"
   }
