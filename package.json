@@ -39,9 +39,34 @@
     "base-app": "^0.2.6",
     "cheerio": "^0.22.0",
     "fs-exists-sync": "^0.1.0",
+    "gulp-format-md": "^0.1.11",
     "lunr": "^0.7.2",
     "mocha": "^3.2.0",
     "write": "^0.3.2",
     "yargs-parser": "^4.2.1"
+  },
+  "verb": {
+    "toc": false,
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
+    "plugins": [
+      "gulp-format-md"
+    ],
+    "lint": {
+      "reflinks": true
+    },
+    "related": {
+      "list": []
+    },
+    "reflinks": [
+      "verb",
+      "verb-generate-readme",
+      "assemble",
+      "base",
+      "generate",
+      "update"
+    ]
   }
 }
