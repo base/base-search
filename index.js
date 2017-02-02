@@ -1,6 +1,5 @@
 'use strict';
 
-var Search = require('./lib/search');
 var utils = require('./lib/utils');
 
 /**
@@ -20,6 +19,6 @@ var utils = require('./lib/utils');
 module.exports = function(config) {
   return function plugin(app) {
     if (!utils.isValid(app, 'base-search')) return;
-    app.define('search', new Search(config));
+    app.define('search', new utils.Sarge(config));
   };
 };

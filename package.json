@@ -34,11 +34,10 @@
     "verb"
   ],
   "dependencies": {
-    "define-property": "^0.2.5",
     "extend-shallow": "^2.0.1",
     "is-valid-app": "^0.2.1",
     "lazy-cache": "^2.0.2",
-    "through2": "^2.0.3"
+    "sarge": "^0.1.2"
   },
   "devDependencies": {
     "algoliasearch": "^3.20.4",
