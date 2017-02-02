@@ -10,9 +10,8 @@
   },
   "license": "MIT",
   "files": [
-    "lib",
-    "LICENSE",
-    "index.js"
+    "index.js",
+    "lib"
   ],
   "main": "index.js",
   "engines": {
@@ -21,18 +20,6 @@
   "scripts": {
     "test": "mocha"
   },
-  "keywords": [
-    "algolia",
-    "assemble",
-    "base",
-    "generate",
-    "lunr",
-    "node",
-    "node-base",
-    "search",
-    "update",
-    "verb"
-  ],
   "dependencies": {
     "extend-shallow": "^2.0.1",
     "is-valid-app": "^0.2.1",
@@ -52,6 +39,18 @@
     "write": "^0.3.2",
     "yargs-parser": "^4.2.1"
   },
+  "keywords": [
+    "algolia",
+    "assemble",
+    "base",
+    "generate",
+    "lunr",
+    "node",
+    "node-base",
+    "search",
+    "update",
+    "verb"
+  ],
   "verb": {
     "toc": false,
     "layout": "default",
@@ -68,12 +67,12 @@
       "list": []
     },
     "reflinks": [
-      "verb",
-      "verb-generate-readme",
       "assemble",
       "base",
       "generate",
-      "update"
+      "update",
+      "verb",
+      "verb-generate-readme"
     ]
   }
 }
