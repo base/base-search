@@ -1,6 +1,6 @@
 # base-search [![NPM version](https://img.shields.io/npm/v/base-search.svg?style=flat)](https://www.npmjs.com/package/base-search) [![NPM monthly downloads](https://img.shields.io/npm/dm/base-search.svg?style=flat)](https://npmjs.org/package/base-search)  [![NPM total downloads](https://img.shields.io/npm/dt/base-search.svg?style=flat)](https://npmjs.org/package/base-search) [![Linux Build Status](https://img.shields.io/travis/node-base/base-search.svg?style=flat&label=Travis)](https://travis-ci.org/node-base/base-search)
 
-> Base plugin that adds methods for creating, updating and using search indexes.
+> Base plugin that adds methods for creating, updating and using search indices.
 
 ## Install
 
@@ -20,7 +20,7 @@ var search = require('base-search');
 
 ### [.search](index.js#L20)
 
-Plugin for [base](https://github.com/node-base/base) applications like [generate](https://github.com/generate/generate), [assemble](https://github.com/assemble/assemble), [verb](https://github.com/verbose/verb), and [update](https://github.com/update/update) to add methods for creating search indexices using [indexers](#indexers).
+Plugin for [base](https://github.com/node-base/base) applications like [generate](https://github.com/generate/generate), [assemble](https://github.com/assemble/assemble), [verb](https://github.com/verbose/verb), and [update](https://github.com/update/update) to add an instance of [sarge](https://github.com/doowb/sarge) as `app.search` that has methods for creating search indices using [indexers](#indexers).
 
 **Params**
 
@@ -32,86 +32,7 @@ Plugin for [base](https://github.com/node-base/base) applications like [generate
 ```js
 var app = assemble();
 app.use(search());
-```
-
-### [Search](lib/search.js#L21)
-
-Search object used to register [indexers](#indexers) and execute the [collect](#collect) and [index](#index) methods on indexers.
-
-**Params**
-
-* `options` **{Object}**: Options to control defaults.
-* `options.indexer` **{String}**: Set a default indexer to use when one isn't specified in [.collect](#collect) or [.index](#index). Defaults to "default".
-
-**Example**
-
-```js
-// plugin adds `.search` property to `app` which is an instance of `Search`
-app.use(search())
 console.log(app.search);
-```
-
-### [.indexer](lib/search.js#L46)
-
-Get or set an indexer by name. This throws an error if only name is passed and the indexer is not found.
-
-**Params**
-
-* `name` **{String}**: Name of indexer to get or set.
-* `indexer` **{Object}**: Instance of an indexer. See [indexers](#indexers) for more information.
-* `returns` **{Object}**: Search instance when setting, indexer instance when getting.
-
-**Example**
-
-```js
-// set
-app.search.indexer('foo', foo);
-// get
-var foo = app.search.indexer('foo');
-```
-
-### [.collect](lib/search.js#L79)
-
-Creates a through stream that will execute `.collect` method on specified indexer for each file passing through the stream. The `.collect` method passes an object to the callback that will be collected and then indexed when `.index` is called.
-
-**Params**
-
-* `options` **{Object}**: Options used to specify the indexer to use.
-* `returns` **{Stream}**: Through stream that's used to collect files to index.
-
-**Example**
-
-```js
-app.src('*.md')
-  // use default set on instance or "default" indexer
-  .pipe(app.search.collect())
-  // or specify a registred indexer to use
-  .pipe(app.search.collect({indexer: 'foo'}));
-```
-
-### [.index](lib/search.js#L118)
-
-Executes the `.index` method on the specified indexer passing the collected files and options along with a callback to indicate when indexing is finished.
-
-**Params**
-
-* `options` **{Object}**: Options to specify the indexer to use and to pass into the `.index` method.
-* `cb` **{Function}**: Callback function passed into the indexer's `.index` method to specify when indexing is finished.
-
-**Example**
-
-```js
-// use default indexer specified when adding the plugin
-app.search.index(function(err) {
-  if (err) return console.error(err);
-  console.log('indexing finished');
-});
-
-// use registered indexer
-app.search.index({indexer: 'foo'}, function(err) {
-  if (err) return console.error(err);
-  console.log('indexing finished');
-});
 ```
 
 ### Indexers
@@ -166,6 +87,16 @@ indexer.index = function(files, options, cb) {
 
 ## About
 
+### Related projects
+
+* [assemble](https://www.npmjs.com/package/assemble): Get the rocks out of your socks! Assemble makes you fast at creating web projects… [more](https://github.com/assemble/assemble) | [homepage](https://github.com/assemble/assemble "Get the rocks out of your socks! Assemble makes you fast at creating web projects. Assemble is used by thousands of projects for rapid prototyping, creating themes, scaffolds, boilerplates, e-books, UI components, API documentation, blogs, building websit")
+* [base](https://www.npmjs.com/package/base): base is the foundation for creating modular, unit testable and highly pluggable node.js applications, starting… [more](https://github.com/node-base/base) | [homepage](https://github.com/node-base/base "base is the foundation for creating modular, unit testable and highly pluggable node.js applications, starting with a handful of common methods, like `set`, `get`, `del` and `use`.")
+* [generate](https://www.npmjs.com/package/generate): Command line tool and developer framework for scaffolding out new GitHub projects. Generate offers the… [more](https://github.com/generate/generate) | [homepage](https://github.com/generate/generate "Command line tool and developer framework for scaffolding out new GitHub projects. Generate offers the robustness and configurability of Yeoman, the expressiveness and simplicity of Slush, and more powerful flow control and composability than either.")
+* [sarge](https://www.npmjs.com/package/sarge): Register and use custom search indexers to create, update and use search indices. | [homepage](https://github.com/doowb/sarge "Register and use custom search indexers to create, update and use search indices.")
+* [search-indexer-algolia](https://www.npmjs.com/package/search-indexer-algolia): base-search indexer to enable collecting and adding records to an algolia search index | [homepage](https://github.com/doowb/search-indexer-algolia "base-search indexer to enable collecting and adding records to an algolia search index")
+* [update](https://www.npmjs.com/package/update): Be scalable! Update is a new, open source developer framework and CLI for automating updates… [more](https://github.com/update/update) | [homepage](https://github.com/update/update "Be scalable! Update is a new, open source developer framework and CLI for automating updates of any kind in code projects.")
+* [verb](https://www.npmjs.com/package/verb): Documentation generator for GitHub projects. Verb is extremely powerful, easy to use, and is used… [more](https://github.com/verbose/verb) | [homepage](https://github.com/verbose/verb "Documentation generator for GitHub projects. Verb is extremely powerful, easy to use, and is used on hundreds of projects of all sizes to generate everything from API docs to readmes.")
+
 ### Contributing
 
 Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](../../issues/new).
@@ -174,12 +105,12 @@ Please read the [contributing guide](contributing.md) for advice on opening issu
 
 ### Building docs
 
-_(This document was generated by [verb-generate-readme](https://github.com/verbose/verb-generate-readme) (a [verb](https://github.com/verbose/verb) generator), please don't edit the readme directly. Any changes to the readme must be made in [.verb.md](.verb.md).)_
+_(This project's readme.md is generated by [verb](https://github.com/verbose/verb-generate-readme), please don't edit the readme directly. Any changes to the readme must be made in the [.verb.md](.verb.md) readme template.)_
 
-To generate the readme and API documentation with [verb](https://github.com/verbose/verb):
+To generate the readme, run the following command:
 
 ```sh
-$ npm install -g verb verb-generate-readme && verb
+$ npm install -g verbose/verb#dev verb-generate-readme && verb
 ```
 
 ### Running tests
@@ -187,7 +118,7 @@ $ npm install -g verb verb-generate-readme && verb
 Install dev dependencies:
 
 ```sh
-$ npm install -d && npm test
+$ npm install && npm test
 ```
 
 ### Author
@@ -200,8 +131,8 @@ $ npm install -d && npm test
 ### License
 
 Copyright © 2017, [Brian Woodward](https://github.com/doowb).
-Released under the [MIT license](LICENSE).
+MIT
 
 ***
 
-_This file was generated by [verb-generate-readme](https://github.com/verbose/verb-generate-readme), v0.4.1, on January 30, 2017._
+_This file was generated by [verb-generate-readme](https://github.com/verbose/verb-generate-readme), v0.4.2, on February 01, 2017._

@@ -4,11 +4,12 @@ var utils = require('./lib/utils');
 
 /**
  * Plugin for [base][] applications like [generate][], [assemble][], [verb][], and [update][]
- * to add methods for creating search indexices using [indexers](#indexers).
+ * to add an instance of [sarge][] as `app.search` that has methods for creating search indices using [indexers](#indexers).
  *
  * ```js
  * var app = assemble();
  * app.use(search());
+ * console.log(app.search);
  * ```
  * @name search
  * @param  {Object} `config` Configuration object used to specify default indexer to use.
