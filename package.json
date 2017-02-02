@@ -1,7 +1,7 @@
 {
   "name": "base-search",
   "description": "Base plugin that adds methods for creating, updating and using search indices.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/node-base/base-search",
   "author": "Brian Woodward (https://github.com/doowb)",
   "repository": "node-base/base-search",
